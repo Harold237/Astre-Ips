@@ -448,4 +448,4 @@ if __name__ == '__main__':
     st.sidebar.dataframe(cold)
     get_chart_78341403()
     # Listen for changes on the selectbox
-    st.sidebar.set_event_on_change("select_student", update_student)
+    #st.sidebar.set_event_on_change("select_student", update_student)
