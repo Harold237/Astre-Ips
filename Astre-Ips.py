@@ -10,9 +10,9 @@ def extract_from_csv(file):
     return df
 
 
-def extract_data(path):
+def extract_data(pathe):
     extracted_data = pd.DataFrame()
-    files_csv = g.glob(path, recursive=True)
+    files_csv = g.glob(pathe, recursive=True)
     for i in files_csv:
         extracted_data = extracted_data.append(extract_from_csv(i), ignore_index=True)
 
@@ -21,11 +21,11 @@ def extract_data(path):
     return extracted_data
 
 
-def Num_et(data):
+def num_et(data):
     Num_etu = data['1. Quel est votre numéro étudiant ? (ex: e22XXXX)']
     for i in Num_etu.index:
         Num = Num_etu[i]
-        if (Num[0].isdigit()):
+        if Num[0].isdigit():
             Num = 'e' + Num[2:]
         Num_etu[i] = Num
     data['1. Quel est votre numéro étudiant ? (ex: e22XXXX)'] = Num_etu
@@ -35,20 +35,25 @@ def Num_et(data):
 
 # rename columns
 column_mapping = {
-    '4. Quel est votre degré d\'intérêt pour ces technologies ? (0 → aucun intérêt, 5 → passionné)   [Web (HTML, CSS , PHP , CMS)]': '4.Web',
-    '4. Quel est votre degré d\'intérêt pour ces technologies ? (0 → aucun intérêt, 5 → passionné)   [Cloud (Azure, AWS,GCP)]': '4.Cloud',
-    '4. Quel est votre degré d\'intérêt pour ces technologies ? (0 → aucun intérêt, 5 → passionné)   [Embarqué (Arduino, Assembleur, Raspberry...)]': '4.Embarqué',
-    '4. Quel est votre degré d\'intérêt pour ces technologies ? (0 → aucun intérêt, 5 → passionné)   [Mobile (Android, iOS,Cross-platform) ]': '4.Mobile',
-    '4. Quel est votre degré d\'intérêt pour ces technologies ? (0 → aucun intérêt, 5 → passionné)   [Dev Jeux vidéo (Unity, Unreal Engine)]': '4.Dev'}
+    '4. Quel est votre degré d\'intérêt pour ces technologies ? (0 → aucun intérêt, 5 → passionné)   [Web (HTML, '
+    'CSS , PHP , CMS)]': '4.Web',
+    '4. Quel est votre degré d\'intérêt pour ces technologies ? (0 → aucun intérêt, 5 → passionné)   [Cloud (Azure, '
+    'AWS,GCP)]': '4.Cloud',
+    '4. Quel est votre degré d\'intérêt pour ces technologies ? (0 → aucun intérêt, 5 → passionné)   [Embarqué ('
+    'Arduino, Assembleur, Raspberry...)]': '4.Embarqué',
+    '4. Quel est votre degré d\'intérêt pour ces technologies ? (0 → aucun intérêt, 5 → passionné)   [Mobile ('
+    'Android, iOS,Cross-platform) ]': '4.Mobile',
+    '4. Quel est votre degré d\'intérêt pour ces technologies ? (0 → aucun intérêt, 5 → passionné)   [Dev Jeux vidéo '
+    '(Unity, Unreal Engine)]': '4.Dev'}
 
 
-def rename_columns(data, column_mapping):
-    data = data.rename(columns=column_mapping)
+def rename_columns(data, colum):
+    data = data.rename(columns=colum)
     return data
 
 
 def transform_data(data):
-    data = Num_et(data)
+    data = num_et(data)
     data = rename_columns(data, column_mapping)
     # print(data)
     return data
@@ -127,11 +132,14 @@ def switch_example(case):
         note = -1
     elif case == 'Distribution Linux (Ubuntu, Debian, Arch...)':
         note = 1
-    elif case == 'C’est un professionnel expert dans un domaine technique capable de résoudre des problèmes de haut niveau et innovants.':
+    elif case == 'C’est un professionnel expert dans un domaine technique capable de résoudre des problèmes de haut ' \
+                 'niveau et innovants.':
         note = 1
-    elif case == 'Un ingénieur est un Homme capable de prendre du recul et d’avoir une solide culture générale, technique et humaine.':
+    elif case == 'Un ingénieur est un Homme capable de prendre du recul et d’avoir une solide culture générale, ' \
+                 'technique et humaine.':
         note = -1
-    elif case == 'C’est avant tout un cadre supérieur technique qui a pour mission de piloter un projet et de gérer une ou plusieurs équipes en interface avec le client.':
+    elif case == 'C’est avant tout un cadre supérieur technique qui a pour mission de piloter un projet et de gérer ' \
+                 'une ou plusieurs équipes en interface avec le client.':
         note = 1
     else:
         note = 0
@@ -139,72 +147,72 @@ def switch_example(case):
 
 
 for index, row in New_df.iterrows():
-    if (row['2. Quelle est la définition d’un ingénieur qui vous correspond le mieux ?']):
+    if row['2. Quelle est la définition d’un ingénieur qui vous correspond le mieux ?']:
         valuer = New_df.at[index, '2. Quelle est la définition d’un ingénieur qui vous correspond le mieux ?']
         New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] + switch_example(valuer)
 
-    if (row['3. Êtes-vous plutôt programmation ... [Procédurale]']):
+    if row['3. Êtes-vous plutôt programmation ... [Procédurale]']:
         New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] + row[
             '3. Êtes-vous plutôt programmation ... [Procédurale]']
-    if (row['3. Êtes-vous plutôt programmation ... [Orienté Object]']):
+    if row['3. Êtes-vous plutôt programmation ... [Orienté Object]']:
         New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] - row[
             '3. Êtes-vous plutôt programmation ... [Orienté Object]']
-    if (row['3. Êtes-vous plutôt programmation ... [Fonctionnelle]']):
+    if row['3. Êtes-vous plutôt programmation ... [Fonctionnelle]']:
         New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] + row[
             '3. Êtes-vous plutôt programmation ... [Fonctionnelle]']
-    if (row['4.Web']):
+    if row['4.Web']:
         New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] - row['4.Web']
-    if (row['4.Cloud']):
+    if row['4.Cloud']:
         New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] + row['4.Cloud']
-    if (row['4.Embarqué']):
+    if row['4.Embarqué']:
         New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] + row['4.Embarqué']
-    if (row['4.Mobile']):
+    if row['4.Mobile']:
         New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] - row['4.Mobile']
-    if (row['4.Dev']):
+    if row['4.Dev']:
         New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] - row['4.Dev']
-    if (row['5. Quelle(s) matière(s) avez-vous aimé particulièrement au lycée parmi les suivantes : ']):
+    if row['5. Quelle(s) matière(s) avez-vous aimé particulièrement au lycée parmi les suivantes : ']:
         liste_matiere = New_df.at[
             index, '5. Quelle(s) matière(s) avez-vous aimé particulièrement au lycée parmi les suivantes : '].split(",")
         for matiere in liste_matiere:
-            if (matiere == 'Maths'):
+            if matiere == 'Maths':
                 New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] + 1
-            elif (matiere == 'Physique/Chimie'):
+            elif matiere == 'Physique/Chimie':
                 New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] + 1
-            elif (matiere == 'Littérature/Philosophie'):
+            elif matiere == 'Littérature/Philosophie':
                 New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] - 1
-            elif (matiere == 'Histoire/Géographie'):
+            elif matiere == 'Histoire/Géographie':
                 New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] - 1
-            elif (matiere == 'Sciences de gestion'):
+            elif matiere == 'Sciences de gestion':
                 New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] - 1
-            elif (matiere == 'Arts Plastiques/Arts appliqués'):
+            elif matiere == 'Arts Plastiques/Arts appliqués':
                 New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] - 1
-            elif (matiere == 'Sciences de l\'ingénieur'):
+            elif matiere == 'Sciences de l\'ingénieur':
                 New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] + 1
             else:
                 New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] + 1
-    if (row['6. Quel(s) cours avez-vous aimé particulièrement au semestre S5 ?']):
+    if row['6. Quel(s) cours avez-vous aimé particulièrement au semestre S5 ?']:
         ligne6 = row['6. Quel(s) cours avez-vous aimé particulièrement au semestre S5 ?']
-        if (ligne6 == "Cryptographie (en Maths)"):
+        if ligne6 == "Cryptographie (en Maths)":
             New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] + 1
-        elif (ligne6 == 'Physique'):
+        elif ligne6 == 'Physique':
             New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] - 1
-        elif (ligne6 == 'Anglais'):
+        elif ligne6 == 'Anglais':
             New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] - 1
-        elif (ligne6 == 'Conduite de projet'):
+        elif ligne6 == 'Conduite de projet':
             New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] - 1
-        elif (ligne6 == 'Droit du travail'):
+        elif ligne6 == 'Droit du travail':
             New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] - 1
-        elif (ligne6 == 'Electronique'):
+        elif ligne6 == 'Electronique':
             New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] + 1
-        elif (ligne6 == 'Programmation informatique'):
+        elif ligne6 == 'Programmation informatique':
             New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] + 1
-        elif (ligne6 == 'Technologie de l’internet'):
+        elif ligne6 == 'Technologie de l’internet':
             New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] - 1
-        elif (ligne6 == 'Algorithmique'):
+        elif ligne6 == 'Algorithmique':
             New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] + 1
-        elif (ligne6 == 'Architecture des ordinateurs'):
+        elif ligne6 == 'Architecture des ordinateurs':
             New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] + 1
-        elif (ligne6 == 'Logique combinatoire et séquentielle'):
+        elif ligne6 == 'Logique combinatoire et séquentielle':
             New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] + 1
         else:
             New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] - 1
@@ -213,7 +221,8 @@ for index, row in New_df.iterrows():
             row[
                 '7. Quels logiciels / applications avez-vous l’habitude (ou avez-vous déjà utilisé) d’utiliser ?  [LabView]']):
         valuer = New_df.at[
-            index, '7. Quels logiciels / applications avez-vous l’habitude (ou avez-vous déjà utilisé) d’utiliser ?  [LabView]']
+            index, '7. Quels logiciels / applications avez-vous l’habitude (ou avez-vous déjà utilisé) d’utiliser ?  ' \
+                   '[LabView]']
         New_df.at[index, 'Notes'] = New_df.at[index, 'Notes'] + switch_example(valuer)
 
     if (
