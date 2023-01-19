@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c7ddad5-35b8-4215-8cbe-25fa9ca56821" name="Changes" comment="V1.4.2" />
+    <list default="true" id="9c7ddad5-35b8-4215-8cbe-25fa9ca56821" name="Changes" comment="V1.4.3">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Astre-Ips.py" beforeDir="false" afterPath="$PROJECT_DIR$/Astre-Ips.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transformdata1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/transformdata1.csv" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674092610102</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="V1.4.3">
+      <created>1674114789655</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674114789655</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,6 +140,7 @@
     <MESSAGE value="V1.4" />
     <MESSAGE value="V1.4.1" />
     <MESSAGE value="V1.4.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1.4.2" />
+    <MESSAGE value="V1.4.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="V1.4.3" />
   </component>
 </project>

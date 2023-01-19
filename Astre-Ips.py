@@ -24,13 +24,13 @@ def extract_data(pathe):
 
 def num_et(data):
     et=[]
-    Num_etu = data['1. Quel est votre numéro étudiant ? (ex: e22XXXX)']
+    Num_etu = data['1.Numéro etudiant']
     for i in Num_etu.index:
         Num = Num_etu[i]
         if Num[0].isdigit():
             Num = 'e' + Num[2:]
         et.append(Num)
-    data['1. Quel est votre numéro étudiant ? (ex: e22XXXX)'] = et
+    data['1.Numéro etudiant'] = et
     # print(data['1. Quel est votre numéro étudiant ? (ex: e22XXXX)'])
     return data
 
@@ -46,7 +46,9 @@ column_mapping = {
     '4. Quel est votre degré d\'intérêt pour ces technologies ? (0 → aucun intérêt, 5 → passionné)   [Mobile ('
     'Android, iOS,Cross-platform) ]': '4.Mobile',
     '4. Quel est votre degré d\'intérêt pour ces technologies ? (0 → aucun intérêt, 5 → passionné)   [Dev Jeux vidéo '
-    '(Unity, Unreal Engine)]': '4.Dev'}
+    '(Unity, Unreal Engine)]': '4.Dev',
+    '1. Quel est votre numéro étudiant ? (ex: e22XXXX)': '1.Numéro etudiant'
+}
 
 
 def rename_columns(data, colum):
@@ -55,8 +57,8 @@ def rename_columns(data, colum):
 
 
 def transform_data(data):
-    data = num_et(data)
     data = rename_columns(data, column_mapping)
+    data = num_et(data)
     # print(data)
     return data
 
@@ -387,7 +389,7 @@ load_df = load(targetfile="transformdata1.csv", data_to_load=New_df)
 
 def get_chart_78341403():
     global selected_student
-    etudiant = New_df['1. Quel est votre numéro étudiant ? (ex: e22XXXX)']
+    etudiant = New_df['1.Numéro etudiant']
     n_sup = New_df[(New_df['Notes'] > 0)]['Notes']
     note_sup = n_sup.values
     n_inf = New_df[(New_df['Notes'] < 0)]['Notes']
@@ -411,7 +413,7 @@ def get_chart_78341403():
     # Check if a student is selected
     if selected_student:
         # Get the data for the selected student
-        student_data = New_df[New_df['1. Quel est votre numéro étudiant ? (ex: e22XXXX)'] == selected_student]
+        student_data = New_df[New_df['1.Numéro etudiant'] == selected_student]
         note = student_data['Notes'].values[0]
         # Add a trace for the selected student
         fig.add_trace(go.Scatter(
@@ -450,7 +452,7 @@ if __name__ == '__main__':
     selected_cols = st.sidebar.multiselect('Select columns', cols)
 
     # In the sidebar, add a dropdown menu for selecting a student ID
-    student_options = New_df['1. Quel est votre numéro étudiant ? (ex: e22XXXX)'].unique().tolist()
+    student_options = New_df['1.Numéro etudiant'].unique().tolist()
     selected_student = st.sidebar.selectbox("Select a student", student_options, format_func=lambda x: f"{x}", key='select_student')
 
     #selected_index = selected_cols.index()
