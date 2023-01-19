@@ -25,6 +25,7 @@ def extract_data(pathe):
 def num_et(data):
     et=[]
     Num_etu = data['1.Numéro etudiant']
+    print(Num_etu)
     for i in Num_etu.index:
         Num = Num_etu[i]
         if Num[0].isdigit():
