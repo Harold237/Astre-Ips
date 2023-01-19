@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c7ddad5-35b8-4215-8cbe-25fa9ca56821" name="Changes" comment="V1.3 add of requirements.txt, setup.sh and procfile">
+    <list default="true" id="9c7ddad5-35b8-4215-8cbe-25fa9ca56821" name="Changes" comment="V1.4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Astre-Ips.py" beforeDir="false" afterPath="$PROJECT_DIR$/Astre-Ips.py" afterDir="false" />
     </list>
@@ -81,7 +81,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674090199670</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="V1.4">
+      <created>1674090966697</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1674090966697</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,6 +108,7 @@
     <MESSAGE value="V1.1" />
     <MESSAGE value="V1.2" />
     <MESSAGE value="V1.3 add of requirements.txt, setup.sh and procfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1.3 add of requirements.txt, setup.sh and procfile" />
+    <MESSAGE value="V1.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="V1.4" />
   </component>
 </project>

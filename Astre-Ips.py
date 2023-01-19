@@ -23,7 +23,7 @@ def extract_data(pathe):
 
 
 def num_et(data):
-    Num_etu = data['1. Quel est votre numéro étudiant ? (ex: e22XXXX)'].columns.tolist()
+    Num_etu = data['1. Quel est votre numéro étudiant ? (ex: e22XXXX)'].unique().tolist()
     for i in Num_etu.index:
         Num = Num_etu[i]
         if Num[0].isdigit():
