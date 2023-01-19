@@ -2,7 +2,7 @@ import glob as g
 import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
-import plotly.express as px
+
 
 
 # extraction
@@ -23,7 +23,7 @@ def extract_data(pathe):
 
 
 def num_et(data):
-    Num_etu = data['1. Quel est votre numéro étudiant ? (ex: e22XXXX)']
+    Num_etu = data['1. Quel est votre numéro étudiant ? (ex: e22XXXX)'].columns.tolist()
     for i in Num_etu.index:
         Num = Num_etu[i]
         if Num[0].isdigit():
