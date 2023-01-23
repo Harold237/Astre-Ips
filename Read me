@@ -1,0 +1,5 @@
+Cette application utilise la bibliothèque de stramlit pour afficher le graphe de l'analyse.
+Cette application est une application web et pour le lancer:
+- ouvrez le terminal
+- accéder à la racine du projet
+- exécuter "streamlit run Astre:Ips.py"
